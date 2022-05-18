@@ -12,8 +12,11 @@
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_update.xml" value="0.264" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/category_item.xml" value="0.2" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/dialog_cate_cr.xml" value="0.1" />
-        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/layout_cate.xml" value="0.1" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/dialog_sua_loai.xml" value="0.1" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/dialog_them_loai.xml" value="0.264" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/layout_cate.xml" value="0.4" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/my_menu.xml" value="0.29398148148148145" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/cate_thucthi.xml" value="0.25364583333333335" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/menu_theloai.xml" value="0.1" />
       </map>
     </option>

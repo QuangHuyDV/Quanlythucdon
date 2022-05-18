@@ -45,9 +45,9 @@ public class ListActivity extends AppCompatActivity {
             DanhSachMonAn.moveToPosition(i);
             int id = DanhSachMonAn.getInt(0);
             String name = DanhSachMonAn.getString(1);
-            int categoryId = DanhSachMonAn.getInt(2);
+            String category = DanhSachMonAn.getString(2);
             int price = DanhSachMonAn.getInt(3);
-            list.add(new Thucdon(id, name, categoryId, price));
+            list.add(new Thucdon(id, name, category, price));
         }
         adapter.notifyDataSetChanged();
     }

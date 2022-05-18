@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 //        database.executeSQL("DELETE FROM thucdon");
 
         //tạo bảng nếu không tông tại
-        database.executeSQL("CREATE TABLE IF NOT EXISTS thucdon(id integer primary key autoincrement, name VARCHAR(100), categoryId INTERGER, price INTERGER)");
+        database.executeSQL("CREATE TABLE IF NOT EXISTS thucdon(id integer primary key autoincrement, name VARCHAR(100), category VARCHAR(50), price INTERGER)");
         database.executeSQL("CREATE TABLE IF NOT EXISTS theloai(idCate integer primary key autoincrement, nameCate VARCHAR(50))");
         database.executeSQL("CREATE TABLE IF NOT EXISTS taikhoan(idUser integer primary key autoincrement, nameUser VARCHAR(50), email TEXT not null, password TEXT not null)");
 

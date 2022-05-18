@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.quanlythucdon.ListCateActivity;
 import com.example.quanlythucdon.R;
 import com.example.quanlythucdon.entity.Theloai;
 
@@ -15,11 +17,11 @@ import java.util.List;
 
 public class TheloaiAdapter extends BaseAdapter {
 
-    private Context context;
+    private ListCateActivity context;
     private int layout;
     private List<Theloai> listTheloai;
 
-    public TheloaiAdapter(Context context, int layout, List<Theloai> listTheloai) {
+    public TheloaiAdapter(ListCateActivity context, int layout, List<Theloai> listTheloai) {
         this.context = context;
         this.layout = layout;
         this.listTheloai = listTheloai;
@@ -54,7 +56,7 @@ public class TheloaiAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.lblCateId = (TextView) view.findViewById(R.id.lblCateId);
-            holder.lblNameCate = (TextView) view.findViewById(R.id.lblNameCate);
+            holder.lblNameCate = view.findViewById(R.id.lblNameCate);
             holder.imgEditCate = view.findViewById(R.id.imgEditCate);
             holder.imgDeleCate = view.findViewById(R.id.imgDeleCate);
             view.setTag(holder);
@@ -62,10 +64,14 @@ public class TheloaiAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        Theloai theloai = listTheloai.get(i);
-        holder.lblCateId.setText(theloai.getIdCate());
-        holder.lblNameCate.setText(theloai.getNameCate());
+        Theloai theloai1 = listTheloai.get(i);
+        int idCate = theloai1.getIdCate();
+        String nameCate = theloai1.getNameCate();
+        holder.lblNameCate.setText(nameCate);
 
+        holder.imgEditCate.setOnClickListener(v ->
+            context.displayDialogCapNhatLoai(idCate, nameCate)
+        );
         return view;
     }
 }

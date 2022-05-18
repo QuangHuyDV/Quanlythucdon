@@ -63,7 +63,7 @@ public class ThucdonAdapter extends BaseAdapter {
         Thucdon thucdon = list.get(i);
         holder.itemId.setId(thucdon.getId());
         holder.itemName.setText(thucdon.getName());
-        holder.itemCate.setId(thucdon.getCategoryId());
+        holder.itemCate.setText(thucdon.getCategory());
         holder.itemPrice.setId(thucdon.getPrice());
 
         return view;

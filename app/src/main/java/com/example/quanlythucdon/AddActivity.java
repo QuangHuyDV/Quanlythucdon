@@ -28,7 +28,7 @@ public class AddActivity extends AppCompatActivity {
 //        val categorys = getResources().getStringArray(R.array.category);
 //        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.category_item);
         btnCancel.setOnClickListener(view -> {
-            Intent it = new Intent(AddActivity.this, MainActivity.class);
+            Intent it = new Intent(AddActivity.this, ListActivity.class);
             startActivity(it);
         });
 
@@ -42,7 +42,7 @@ public class AddActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(view -> {
             MyDatabase database = new MyDatabase(AddActivity.this, "mydatabase.db",null,1);
             database.CreateItem(this ,txtName.getText().toString().trim()
-                    , txtCategory.getId()
+                    , String.valueOf(txtCategory.getText())
                     , txtPrice.getId());
         });
     }

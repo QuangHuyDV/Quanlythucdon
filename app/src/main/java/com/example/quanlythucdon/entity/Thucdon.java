@@ -3,13 +3,13 @@ package com.example.quanlythucdon.entity;
 public class Thucdon {
     private int id;
     private String name;
-    private int categoryId;
+    private String category;
     private int price;
 
-    public Thucdon(int id, String name, int categoryId, int price) {
+    public Thucdon(int id, String name, String category, int price) {
         this.id = id;
         this.name = name;
-        this.categoryId = categoryId;
+        this.category = category;
         this.price = price;
     }
 
@@ -29,12 +29,12 @@ public class Thucdon {
         this.name = name;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public int getPrice() {

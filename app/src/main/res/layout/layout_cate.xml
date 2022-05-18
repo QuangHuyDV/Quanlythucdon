@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="5dp">
@@ -19,9 +19,9 @@
                 android:id="@+id/lblCateId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="12dp"
-                android:text="Mã"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:inputType="number"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +30,8 @@
                 android:id="@+id/lblNameCate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="5dp"
                 android:text="TextView"
                 android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/lblCateId"
@@ -41,8 +41,8 @@
                 android:id="@+id/imgDeleCate"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="360dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/a1"
                 android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/imgEditCate"
@@ -50,15 +50,15 @@
 
             <ImageView
                 android:id="@+id/imgEditCate"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="151dp"
-                android:layout_marginTop="12dp"
+                android:layout_width="32dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="320dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/a3"
                 android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/lblNameCate"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>>
     </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -37,7 +37,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         return  database.rawQuery(sql, null);
     }
 
-    public void CreateItem(Context context,String name, int category, int price) {
+    public void CreateItem(Context context,String name, String category, int price) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);

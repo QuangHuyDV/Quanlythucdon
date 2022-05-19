@@ -7,25 +7,27 @@
     tools:context=".AddActivity">
 
     <TextView
-        android:id="@+id/lblId"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="11dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Mã món ăn "
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/lblName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView9"
+        android:layout_width="97dp"
+        android:layout_height="24dp"
+        android:gravity="center|left"
+        android:text="Loại món ăn"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtCategoryEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtCategoryEdit" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="97dp"
+        android:layout_height="24dp"
+        android:gravity="center|left"
+        android:text="Tên món ăn"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtNameEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtNameEdit" />
 
     <EditText
-        android:id="@+id/lblName"
+        android:id="@+id/txtNameEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -40,27 +42,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/lblImg"
+        android:id="@+id/txtCategoryEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="31dp"
-        android:ems="10"
-        android:hint="Ảnh món ăn(nếu có)"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblName" />
-
-    <EditText
-        android:id="@+id/lblCategory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="31dp"
         android:ems="10"
         android:hint="Loại món ăn"
@@ -69,14 +55,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblImg" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNameEdit" />
 
     <EditText
-        android:id="@+id/lblPrice"
+        android:id="@+id/txtPriceEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="31dp"
         android:ems="10"
         android:hint="Giá"
@@ -85,37 +71,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCategoryEdit" />
 
     <Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btnEditT"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="31dp"
-        android:text="Sửa"
+        android:text="Thêm"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPriceEdit" />
 
     <Button
-        android:id="@+id/btnHome"
+        android:id="@+id/btnCancel3"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="31dp"
         android:text="Trở về"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPriceEdit" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="97dp"
+        android:layout_height="24dp"
+        android:gravity="center|left"
+        android:text="Giá "
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtPriceEdit"
+        app:layout_constraintStart_toStartOf="@+id/txtPriceEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

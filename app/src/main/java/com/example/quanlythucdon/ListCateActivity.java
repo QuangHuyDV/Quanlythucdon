@@ -50,18 +50,12 @@ public class ListCateActivity extends AppCompatActivity {
 
         createDatabase1(database);
         FloatingActionButton btnCreateCate = (FloatingActionButton) findViewById(R.id.btnCreateCate);
-        ImageView imgEditCate = findViewById(R.id.imgEditCate);
-        ImageView imgDeleCate = findViewById(R.id.imgDeleCate);
         btnCreateCate.setOnClickListener(v -> displayDialogThemLoai());
-//        imgEditCate.setOnClickListener(v -> displayDialogCapNhatLoai(1,));
 
-
-//        displayDialogThemLoai();
     }
 
     private void createDatabase1(MyDatabase database) {
 
-//        database.executeSQL("CREATE TABLE IF NOT EXISTS theloai(idCate INTEGER  PRIMARY KEY AUTOINCREMENT, nameCate VARCHAR(50))");
         Cursor rs = database.retrieveData("select * from theloai");
         listTheloai.clear();
         while (rs.moveToNext()) {
@@ -118,12 +112,12 @@ public class ListCateActivity extends AppCompatActivity {
         });
         btnCateUp.setOnClickListener(v -> {
             String name = txtNameCateUp.getText().toString();
-            database.executeSQL("update theloai set nameCate = '"+ nameCate +"where idCate = "+ idCate );
-            Toast.makeText(getApplicationContext(), "Cập nhật thành công !", Toast.LENGTH_SHORT).show();
+            database.executeSQL("update theloai set nameCate = '"+ name +"' where idCate = " + idCate );
+            Toast.makeText(this, "Cập nhật thành công !", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
-
         createDatabase1(database);
+        dialog.show();
     }
 
 }

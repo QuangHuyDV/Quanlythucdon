@@ -1,15 +1,23 @@
 package com.example.quanlythucdon.model;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+
+import com.example.quanlythucdon.ListActivity;
 import com.example.quanlythucdon.R;
+import com.example.quanlythucdon.UpdateActivity;
 import com.example.quanlythucdon.entity.Thucdon;
 
 import java.util.ArrayList;
@@ -75,8 +83,11 @@ public class ThucdonAdapter extends BaseAdapter implements Filterable {
     }
 
     private class ViewHolder {
-        TextView itemId, itemName, itemCate, itemPrice;
-
+        TextView itemId;
+        TextView itemName;
+        TextView itemCate;
+        TextView itemPrice;
+        Button btnEdit, btnDele;
     }
 
     @Override
@@ -91,6 +102,8 @@ public class ThucdonAdapter extends BaseAdapter implements Filterable {
             holder.itemName = view.findViewById(R.id.itemName);
             holder.itemCate = view.findViewById(R.id.itemCate);
             holder.itemPrice = view.findViewById(R.id.itemPrice);
+            holder.btnEdit = view.findViewById(R.id.btnEdit);
+            holder.btnDele = view.findViewById(R.id.btnDele);
             view.setTag(holder);
         }else {
             holder = (ViewHolder) view.getTag();
@@ -102,6 +115,37 @@ public class ThucdonAdapter extends BaseAdapter implements Filterable {
         holder.itemCate.setText(thucdon.getCategory());
         holder.itemPrice.setText(String.valueOf(thucdon.getPrice()));
 
+        holder.btnEdit.setOnClickListener(v -> {
+            UpdateActivity.Capnhat(thucdon.getId(),thucdon.getName(),thucdon.getCategory(),thucdon.getPrice());
+        });
+
+        holder.btnDele.setOnClickListener(view1 -> {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Xác nhận");
+            dialog.setMessage("Bạn có thực sự muốn xóa ?");
+
+            dialog.setPositiveButton("Đồng ý", (dialog1, which) -> deleteThucdon(thucdon.getId()));
+            dialog.setNegativeButton("Không", (dialog12, which) -> {
+                return;
+            });
+            dialog.show();
+        });
         return view;
+    }
+
+    private void deleteThucdon(int id) {
+        MyDatabase database = new MyDatabase(context, "mydatabase.db", null, 1);
+        database.executeSQL("delete from thucdon where id ="+ id);
+        Cursor DanhSachMonAn = database.retrieveData("select * from thucdon");
+        list.clear();
+        for (int i = 0; i < DanhSachMonAn.getCount(); i++) {
+            DanhSachMonAn.moveToPosition(i);
+            int id1 = DanhSachMonAn.getInt(0);
+            String name = DanhSachMonAn.getString(1);
+            String category = DanhSachMonAn.getString(2);
+            int price = DanhSachMonAn.getInt(3);
+            list.add(new Thucdon(id1, name, category, price));
+        }
+        notifyDataSetChanged();
     }
 }

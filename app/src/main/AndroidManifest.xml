@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Quanlythucdon"
         tools:targetApi="31">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".addEmActivity"
             android:exported="false" />
         <activity

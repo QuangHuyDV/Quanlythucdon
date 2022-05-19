@@ -1,6 +1,8 @@
 package com.example.quanlythucdon.model;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.example.quanlythucdon.ListCateActivity;
 import com.example.quanlythucdon.R;
 import com.example.quanlythucdon.entity.Theloai;
+import com.example.quanlythucdon.entity.Thucdon;
 
 import java.util.List;
 
@@ -72,7 +77,32 @@ public class TheloaiAdapter extends BaseAdapter {
         holder.imgEditCate.setOnClickListener(v ->
             context.displayDialogCapNhatLoai(idCate, nameCate)
         );
+        holder.imgDeleCate.setOnClickListener(view1 -> {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Xác nhận");
+            dialog.setMessage("Bạn có thực sự muốn xóa ?");
+
+            dialog.setPositiveButton("Đồng ý", (dialog1, which) -> deleteTheloai(theloai1.getIdCate()));
+            dialog.setNegativeButton("Không", (dialog12, which) -> {
+                return;
+            });
+            dialog.show();
+        });
         return view;
+    }
+
+    private void deleteTheloai(int id) {
+        MyDatabase database = new MyDatabase(context, "mydatabase.db", null, 1);
+        database.executeSQL("delete from theloai where idCate ="+ id);
+        Cursor DanhSachLoai = database.retrieveData("select * from theloai");
+        listTheloai.clear();
+        for (int i = 0; i < DanhSachLoai.getCount(); i++) {
+            DanhSachLoai.moveToPosition(i);
+            int id1 = DanhSachLoai.getInt(0);
+            String name = DanhSachLoai.getString(1);
+            listTheloai.add(new Theloai(id1, name));
+        }
+        notifyDataSetChanged();
     }
 
 }

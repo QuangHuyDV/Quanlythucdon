@@ -13,86 +13,45 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.quanlythucdon.model.MyDatabase;
+
 public class UpdateActivity extends AppCompatActivity {
-    TextView lblId;
-    EditText lblName, lblImg, lblCate, lblPrice;
+    EditText txtNameEdit, txtCategoryEdit, txtPriceEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        final Button btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        final Button btnHome = (Button) findViewById(R.id.btnHome);
-        lblId = (TextView) findViewById(R.id.lblId);
-        lblImg = (EditText) findViewById(R.id.lblImg);
-        lblName = (EditText) findViewById(R.id.lblName);
-        lblCate = (EditText) findViewById(R.id.lblCategory);
-        lblPrice = (EditText) findViewById(R.id.lblPrice);
-
-        btnUpdate.setOnClickListener((View.OnClickListener) (view) -> {
-            SQLiteDatabase database = openOrCreateDatabase("thucdon", MODE_PRIVATE, null);
-            String name = lblName.getText().toString();
-            String img = lblImg.getText().toString();
-            String cate = lblCate.getText().toString();
-            int price = Integer.parseInt(lblPrice.getText().toString());
-
-            ContentValues values = new ContentValues();
-            values.put("name", name);
-            values.put("category", cate);
-            values.put("price", price);
-            values.put("image", img);
-
-            long records = database.update("book", values, "id = ?",
-                    new String[]{lblId.getText().toString()});
-            if(records > 0) {
-                Toast.makeText(getApplicationContext(), "Cập nhật thành công",
-                        Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "Cập nhật thất bại",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(UpdateActivity.this, ListActivity.class);
-                startActivity(it);
-            }
-        });
-
-        displayDetails();
     }
 
-    private void displayDetails() {
-//        TextView lblId = (TextView) findViewById(R.id.lblId);
-//        EditText lblName = (EditText) findViewById(R.id.lblName);
-//        EditText lblImg = (EditText) findViewById(R.id.lblImg);
-//        EditText lblCate = (EditText) findViewById(R.id.lblCategory);
-//        EditText lblPrice = (EditText) findViewById(R.id.lblPrice);
+    public void Capnhat(int id, String name, String category, int price) {
+        MyDatabase database = new MyDatabase(this, "mydatabase.db", null,1);
+        Button btnUpdate = (Button) findViewById(R.id.btnEditT);
+        Button btnHome = (Button) findViewById(R.id.btnCancel2);
+        txtNameEdit = (EditText) findViewById(R.id.txtNameEdit);
+        txtCategoryEdit = (EditText) findViewById(R.id.txtCategoryEdit);
+        txtPriceEdit = (EditText) findViewById(R.id.txtPriceEdit);
 
-        Intent it = getIntent();
+        txtNameEdit.setText(name);
+        txtCategoryEdit.setText(category);
+        txtPriceEdit.setText(price);
 
-        String id = it.getStringExtra("id");
+        btnHome.setOnClickListener(view -> {
+            Intent it = new Intent(UpdateActivity.this, ListActivity.class);
+            startActivity(it);
+        });
 
-        SQLiteDatabase database = openOrCreateDatabase("mydatabase", MODE_PRIVATE, null);
+        btnUpdate.setOnClickListener(v -> {
+            String name1 = txtNameEdit.getText().toString();
+            String category1 = txtCategoryEdit.getText().toString();
+            int price1 = Integer.parseInt(txtPriceEdit.getText().toString());
+            database.executeSQL("update thucdon set name = '"+name1+"', category = '"+category1+"', price = "+price1+" where id = "+id);
+            Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(UpdateActivity.this, ListActivity.class);
+            startActivity(it);
+        });
 
-        Cursor rs = database.query("thucdon", new String[] {"id", "name", "img", "category", "price"}, "id = ?",
-                new String[] {String.valueOf(id)}, null, null, null, null);
-
-        if (rs != null) {
-            rs.moveToFirst();
-        }
-        String Id = rs.getString(0);
-        String name = rs.getString(1);
-        String img = rs.getString(2);
-        String cate = rs.getString(3);
-        int price = rs.getInt(4);
-
-        lblName.setText(Id + "");
-        lblImg.setText(name + "");
-        lblImg.setText(img + "");
-        lblCate.setText(cate + "");
-        lblPrice.setText(price + "");
     }
+
 }

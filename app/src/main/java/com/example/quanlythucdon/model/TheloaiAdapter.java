@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.quanlythucdon.ListCateActivity;
 import com.example.quanlythucdon.R;
@@ -56,7 +55,7 @@ public class TheloaiAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.lblCateId = (TextView) view.findViewById(R.id.lblCateId);
-            holder.lblNameCate = view.findViewById(R.id.lblNameCate);
+            holder.lblNameCate = view.findViewById(R.id.txtEmName);
             holder.imgEditCate = view.findViewById(R.id.imgEditCate);
             holder.imgDeleCate = view.findViewById(R.id.imgDeleCate);
             view.setTag(holder);
@@ -67,6 +66,7 @@ public class TheloaiAdapter extends BaseAdapter {
         Theloai theloai1 = listTheloai.get(i);
         int idCate = theloai1.getIdCate();
         String nameCate = theloai1.getNameCate();
+        holder.lblCateId.setText(String.valueOf(idCate));
         holder.lblNameCate.setText(nameCate);
 
         holder.imgEditCate.setOnClickListener(v ->
@@ -74,4 +74,5 @@ public class TheloaiAdapter extends BaseAdapter {
         );
         return view;
     }
+
 }

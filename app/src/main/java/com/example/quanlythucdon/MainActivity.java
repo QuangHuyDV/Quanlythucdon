@@ -7,7 +7,15 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.quanlythucdon.model.MyDatabase;
+
+import org.json.JSONArray;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
         //tạo tài khoản
 //        database.executeSQL("INSERT INTO taikhoan(nameUser, email, password) values('huy','huy@gmail.com','123')");
 
-        //tạo thể loại
-//        database.executeSQL("insert into theloai(nameCate) values('Món lẩu')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món tráng miệng')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món chính')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món nhúng')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Nước uống')");
-
         //chuyển trang danh sách món ăn
         Toast.makeText(this, "Đã tạo database + table", Toast.LENGTH_SHORT).show();
         Button btnList = (Button) findViewById(R.id.btnList); 
@@ -54,11 +55,27 @@ public class MainActivity extends AppCompatActivity {
             startActivity(it);
         });
 
-        //chuyển trang đặt món(chưa làm)
+
         Button btnReserve = (Button) findViewById(R.id.btnReserve);
         btnReserve.setOnClickListener(view -> {
             Intent it = new Intent(MainActivity.this, ListActivity.class);
             startActivity(it);
         });
+
+        Button btnReadFile = (Button) findViewById(R.id.btnReadFile);
+        btnReadFile.setOnClickListener(view -> {
+//            readJSON(" https://jsonkeeper.com/b/B04F");
+            Intent it = new Intent(MainActivity.this, EmployeeActivity.class);
+            startActivity(it);
+        });
+    }
+
+    private  void readJSON(String url) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                response -> Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_SHORT).show(),
+                error -> Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
+        requestQueue.add(jsonArrayRequest);
     }
 }

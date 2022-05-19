@@ -27,12 +27,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lblNameCate"
+                android:id="@+id/txtEmName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="5dp"
+                android:paddingLeft="5dp"
                 android:text="TextView"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
                 android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/lblCateId"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,9 +59,10 @@
                 android:layout_marginTop="5dp"
                 android:src="@drawable/a3"
                 android:textSize="22sp"
-                app:layout_constraintStart_toEndOf="@+id/lblNameCate"
+                app:layout_constraintStart_toEndOf="@+id/txtEmName"
                 app:layout_constraintTop_toTopOf="parent" />
-        </RelativeLayout>>
+        </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

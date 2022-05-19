@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.Editable;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -37,12 +38,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         return  database.rawQuery(sql, null);
     }
 
-    public void CreateItem(Context context,String name, String category, int price) {
+    public void CreateItem(Context context, String name, String category, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
-        values.put("categoryId", category);
-        values.put("price", price);
+        values.put("category", category);
+        values.put("price", Integer.parseInt(price));
         long records;
         records = db.insert("thucdon", null, values);
         if (records > 0) {

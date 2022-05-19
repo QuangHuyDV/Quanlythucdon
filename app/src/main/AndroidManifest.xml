@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.quanlythucdon">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,21 +16,28 @@
         android:theme="@style/Theme.Quanlythucdon"
         tools:targetApi="31">
         <activity
+            android:name=".addEmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeActivity"
+            android:exported="false"
+            android:label="Danh sách nhân viên" />
+        <activity
             android:name=".ListCateActivity"
             android:exported="false"
-            android:label="Danh sách loại món ăn"/>
+            android:label="Danh sách loại" />
         <activity
             android:name=".ListActivity"
             android:exported="false"
-            android:label="Danh sách món ăn"/>
+            android:label="Danh sách món ăn" />
         <activity
             android:name=".AddActivity"
             android:exported="false"
-            android:label="Thêm món ăn"/>
+            android:label="Thêm món ăn" />
         <activity
             android:name=".UpdateActivity"
             android:exported="false"
-            android:label="Sửa món ăn"/>
+            android:label="Sửa món ăn" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

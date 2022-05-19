@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class ListCateActivity extends AppCompatActivity implements DialogCate {
+public class ListCateActivity extends AppCompatActivity {
 
     ListView listCate;
     ArrayList<Theloai> listTheloai;
@@ -39,12 +39,12 @@ public class ListCateActivity extends AppCompatActivity implements DialogCate {
         adapter = new TheloaiAdapter(this, R.layout.layout_cate, listTheloai);
         listCate.setAdapter(adapter);
 
-        database.executeSQL("DELETE FROM theloai");
-        database.executeSQL("insert into theloai(nameCate) values('Món lẩu')");
-        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món tráng miệng')");
-        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món chính')");
-        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món nhúng')");
-        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Nước uống')");
+//        database.executeSQL("DELETE FROM theloai");
+//        database.executeSQL("insert into theloai(nameCate) values('Món lẩu')");
+//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món tráng miệng')");
+//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món chính')");
+//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món nhúng')");
+//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Nước uống')");
 
 
 
@@ -53,7 +53,7 @@ public class ListCateActivity extends AppCompatActivity implements DialogCate {
         ImageView imgEditCate = findViewById(R.id.imgEditCate);
         ImageView imgDeleCate = findViewById(R.id.imgDeleCate);
         btnCreateCate.setOnClickListener(v -> displayDialogThemLoai());
-
+//        imgEditCate.setOnClickListener(v -> displayDialogCapNhatLoai(1,));
 
 
 //        displayDialogThemLoai();
@@ -71,20 +71,6 @@ public class ListCateActivity extends AppCompatActivity implements DialogCate {
             listTheloai.add(theloai);
         }
         adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public boolean onCreateCateMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.cate_thucthi, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsCate(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.mnThemCate) {
-            displayDialogThemLoai();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void displayDialogThemLoai() {

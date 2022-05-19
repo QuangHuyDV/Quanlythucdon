@@ -43,7 +43,7 @@ public class AddActivity extends AppCompatActivity {
             MyDatabase database = new MyDatabase(AddActivity.this, "mydatabase.db",null,1);
             database.CreateItem(this ,txtName.getText().toString().trim()
                     , String.valueOf(txtCategory.getText())
-                    , txtPrice.getId());
+                    , String.valueOf(txtPrice.getText()));
         });
     }
 

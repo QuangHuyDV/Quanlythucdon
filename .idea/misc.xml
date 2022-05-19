@@ -6,6 +6,8 @@
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.214" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/drawable/ic_launcher_background.xml" value="0.214" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_add_em.xml" value="0.25364583333333335" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_employee.xml" value="0.264" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_list.xml" value="0.2578125" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_list_cate.xml" value="0.24010416666666667" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -14,9 +16,13 @@
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/dialog_cate_cr.xml" value="0.1" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/dialog_sua_loai.xml" value="0.1" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/dialog_them_loai.xml" value="0.264" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/employee_details.xml" value="0.264" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/layout_cate.xml" value="0.4" />
-        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/my_menu.xml" value="0.29398148148148145" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/layout/my_menu.xml" value="0.1" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/cate_thucthi.xml" value="0.25364583333333335" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/employee_menu.xml" value="0.25364583333333335" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/main_return.xml" value="0.25025641025641027" />
+        <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/main_search.xml" value="0.1" />
         <entry key="..\:/mobile/Quanlythucdon/app/src/main/res/menu/menu_theloai.xml" value="0.1" />
       </map>
     </option>

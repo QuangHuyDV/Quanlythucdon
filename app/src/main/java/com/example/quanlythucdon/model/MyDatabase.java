@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyDatabase extends SQLiteOpenHelper {
 
     Context context;
@@ -52,5 +55,23 @@ public class MyDatabase extends SQLiteOpenHelper {
             Toast.makeText(context.getApplicationContext(), "Thêm thất bại !", Toast.LENGTH_LONG).show();
         }
         db.close();
+    }
+
+    public List<String> getAll() {
+        List<String> list = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM theloai";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);//selectQuery,selectedArguments
+
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(1));
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
     }
 }

@@ -62,13 +62,10 @@ public class addEmActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(addEmActivity.this, "Thêm nhân viên thất bại", Toast.LENGTH_SHORT).show();
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(addEmActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
-                Log.d("Error", "Có lỗi: " + error.toString());
-            }
-//        }) {
+                }, error -> {
+                    Toast.makeText(addEmActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                    Log.d("Error", "Có lỗi: " + error.toString());
+                }){
 //            @Nullable
 //            @Override
 //            protected Map<String, String> getParam() throws AuthFailureError {
@@ -79,7 +76,7 @@ public class addEmActivity extends AppCompatActivity {
 //                params.put("luong", txtLuong.getText().toString().trim());
 //                return params;
 //            }
-        });
+        };
         requestQueue.add(stringRequest);
 
     }

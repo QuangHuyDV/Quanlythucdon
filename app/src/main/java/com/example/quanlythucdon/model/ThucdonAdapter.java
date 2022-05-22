@@ -2,6 +2,7 @@ package com.example.quanlythucdon.model;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -35,6 +36,11 @@ public class ThucdonAdapter extends BaseAdapter implements Filterable {
         this.layout = layout;
         this.list = list;
         this.listOld = list;
+    }
+
+    public ThucdonAdapter(UpdateActivity updateActivity, ArrayList<Thucdon> list1) {
+        this.context = updateActivity;
+        this.list = list1;
     }
 
     @Override
@@ -116,7 +122,12 @@ public class ThucdonAdapter extends BaseAdapter implements Filterable {
         holder.itemPrice.setText(String.valueOf(thucdon.getPrice()));
 
         holder.btnEdit.setOnClickListener(v -> {
-            UpdateActivity.Capnhat(thucdon.getId(),thucdon.getName(),thucdon.getCategory(),thucdon.getPrice());
+            Intent it = new Intent(context, UpdateActivity.class);
+            it.putExtra("idE", thucdon.getId());
+            it.putExtra("nameE",thucdon.getName());
+            it.putExtra("categoryE", thucdon.getCategory());
+            it.putExtra("priceE", thucdon.getPrice());
+            context.startActivity(it);
         });
 
         holder.btnDele.setOnClickListener(view1 -> {
@@ -147,5 +158,10 @@ public class ThucdonAdapter extends BaseAdapter implements Filterable {
             list.add(new Thucdon(id1, name, category, price));
         }
         notifyDataSetChanged();
+    }
+
+    private void themThucDon(int id) {
+        MyDatabase database = new MyDatabase(context, "mydatabase.db", null, 1);
+        Cursor ThucDon1 = database.retrieveData("select * from thucdon where id = "+ id);
     }
 }

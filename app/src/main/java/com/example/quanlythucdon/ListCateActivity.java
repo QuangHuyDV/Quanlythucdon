@@ -1,6 +1,7 @@
 package com.example.quanlythucdon;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -39,21 +40,13 @@ public class ListCateActivity extends AppCompatActivity {
         adapter = new TheloaiAdapter(this, R.layout.layout_cate, listTheloai);
         listCate.setAdapter(adapter);
 
-//        database.executeSQL("DELETE FROM theloai");
-//        database.executeSQL("insert into theloai(nameCate) values('Món lẩu')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món tráng miệng')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món chính')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Món nhúng')");
-//        database.executeSQL("insert into theloai(idCate, nameCate) values(null, 'Nước uống')");
-
-
-
-        createDatabase1(database);
         FloatingActionButton btnCreateCate = (FloatingActionButton) findViewById(R.id.btnCreateCate);
         btnCreateCate.setOnClickListener(v -> displayDialogThemLoai());
 
+        createDatabase1(database);
     }
 
+    //lấy dữ liệu trong bảng
     private void createDatabase1(MyDatabase database) {
 
         Cursor rs = database.retrieveData("select * from theloai");
@@ -116,8 +109,8 @@ public class ListCateActivity extends AppCompatActivity {
             Toast.makeText(this, "Cập nhật thành công !", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
-        createDatabase1(database);
         dialog.show();
+        createDatabase1(database);
     }
 
 }

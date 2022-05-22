@@ -1,5 +1,6 @@
 package com.example.quanlythucdon;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -14,7 +15,6 @@ import android.widget.ListView;
 import com.example.quanlythucdon.model.MyDatabase;
 import com.example.quanlythucdon.entity.Thucdon;
 import com.example.quanlythucdon.model.ThucdonAdapter;
-import com.example.quanlythucdon.AddActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class ListActivity extends AppCompatActivity {
     ListView listThucdon;
     ThucdonAdapter adapter;
     SearchView searchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class ListActivity extends AppCompatActivity {
         });
 
         //lấy danh sách món ăn
-        list = new ArrayList<Thucdon>();
+        list = new ArrayList<>();
         listThucdon = findViewById(R.id.liViewMenu);
         adapter = new ThucdonAdapter(this, R.layout.my_menu, list);
         listThucdon.setAdapter(adapter);
@@ -49,13 +50,6 @@ public class ListActivity extends AppCompatActivity {
     //tạo+ lấy danh sách thực đơn
     private void CreateData() {
         MyDatabase database = new MyDatabase(ListActivity.this, "mydatabase.db", null, 1);
-
-//        database.executeSQL("insert into thucdon(name, category, price) values('Lẩu gà', 'Món lẩu', 180000)");
-//        database.executeSQL("insert into thucdon(name, category, price) values('Lẩu thái cua', 'Món lẩu', 200000)");
-//        database.executeSQL("insert into thucdon(name, category, price) values('Lẩu thái tôm', 'Món lẩu', 200000)");
-//        database.executeSQL("insert into thucdon(name, category, price) values('Lẩu bò', 'Món lẩu', 180000)");
-//        database.executeSQL("insert into thucdon(name, category, price) values('Lẩu hải sản', 'Món lẩu', 210000)");
-
 
         Cursor DanhSachMonAn = database.retrieveData("select * from thucdon");
         list.clear();

@@ -24,25 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //tạo database
         MyDatabase database = new MyDatabase(this, "mydatabase.db", null,1);
 
-        //xóa dữ liệu trong bảng đã có
-//        database.executeSQL("DELETE FROM taikhoan");
-//        database.executeSQL("DELETE FROM theloai");
-//        database.executeSQL("DELETE FROM thucdon");
-
-        //tạo bảng nếu không tông tại
-        database.executeSQL("CREATE TABLE IF NOT EXISTS thucdon(id integer primary key autoincrement, name VARCHAR(100), category VARCHAR(50), price INTERGER)");
-        database.executeSQL("CREATE TABLE IF NOT EXISTS theloai(idCate integer primary key autoincrement, nameCate VARCHAR(50))");
-        database.executeSQL("CREATE TABLE IF NOT EXISTS taikhoan(idUser integer primary key autoincrement, nameUser VARCHAR(50), email TEXT not null, password TEXT not null)");
-
-        //tạo tài khoản
-//        database.executeSQL("INSERT INTO taikhoan(nameUser, email, password) values('huy','huy@gmail.com','123')");
-
         //chuyển trang danh sách món ăn
-        Toast.makeText(this, "Đã tạo database + table", Toast.LENGTH_SHORT).show();
-        Button btnList = (Button) findViewById(R.id.btnList); 
+        Button btnList = (Button) findViewById(R.id.btnList);
         btnList.setOnClickListener(view -> {
             Intent it = new Intent(MainActivity.this, ListActivity.class);
             startActivity(it);
@@ -55,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(it);
         });
 
-
+        //chức năng(chưa lm)
         Button btnReserve = (Button) findViewById(R.id.btnReserve);
         btnReserve.setOnClickListener(view -> {
             Intent it = new Intent(MainActivity.this, ListActivity.class);
@@ -74,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
-                response -> Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_SHORT).show(),
-                error -> Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
+                response -> Toast.makeText(this, response.toString(), Toast.LENGTH_SHORT).show(),
+                error -> Toast.makeText(this, error.toString(), Toast.LENGTH_SHORT).show());
         requestQueue.add(jsonArrayRequest);
     }
 }

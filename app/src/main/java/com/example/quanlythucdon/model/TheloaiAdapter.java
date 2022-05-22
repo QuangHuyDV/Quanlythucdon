@@ -17,6 +17,7 @@ import com.example.quanlythucdon.R;
 import com.example.quanlythucdon.entity.Theloai;
 import com.example.quanlythucdon.entity.Thucdon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TheloaiAdapter extends BaseAdapter {

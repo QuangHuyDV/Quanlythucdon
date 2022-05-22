@@ -31,9 +31,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/editbackground"
         android:layout_marginEnd="31dp"
         android:ems="10"
+        android:padding="10dp"
         android:hint="Tên món ăn"
         android:inputType="textPersonName"
         android:textSize="20sp"
@@ -47,8 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/editbackground"
         android:layout_marginEnd="31dp"
         android:ems="10"
+        android:padding="10dp"
         android:hint="Loại món ăn"
         android:inputType="textPersonName"
         android:textSize="20sp"
@@ -63,9 +67,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/editbackground"
         android:layout_marginEnd="31dp"
         android:ems="10"
         android:hint="Giá"
+        android:padding="10dp"
         android:inputType="number"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,5 +120,26 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txtPrice"
         app:layout_constraintStart_toStartOf="@+id/txtPrice" />
+
+    <ImageView
+        android:id="@+id/iconCreate"
+        android:layout_width="208dp"
+        android:layout_height="135dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/lau123" />
+
+<!--    <Spinner-->
+<!--        android:id="@+id/cateList"-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:background="@drawable/editbackground"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="583dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
